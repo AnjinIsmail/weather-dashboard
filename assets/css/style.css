@@ -1,0 +1,43 @@
+/* font-family: 'Commissioner', sans-serif;
+font-family: 'Raleway', sans-serif; */
+/* body {
+  background-color: var(--primary);
+  margin: 0;
+  padding: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: var(--dark);
+  line-height: 1.5;
+  font-size: 16px; */
+
+
+.hero {
+  padding: 3% 4%;
+  background-color: black;
+  color: var(--primary);
+}
+
+/* .hero p {
+  max-width: 75%;
+} */
+
+h1 {
+  font-weight: 700;
+  margin: 0;
+  color:white;
+  line-height: 1.25;
+  text-align: center;
+}
+#city {
+  color: black;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.btn:hover {
+  color: var(--primary);
+  background-color: var(--tertiary);
+  transform: translate(0, 0);
+  box-shadow: 2px 2px var(--dark);
+}
+
+
