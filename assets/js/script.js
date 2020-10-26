@@ -1,10 +1,17 @@
 var weather = function (cityName) {
+    if (location.protocol === 'http:') {
     var apiURL =
+        "http://api.openweathermap.org/data/2.5/weather?q=" +
+        cityName +
+        "&appid=829ab038feb797ebd959e94c190da467&units=imperial";
+    var apiFive = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
+    } else {
+        var apiURL =
         "https://api.openweathermap.org/data/2.5/weather?q=" +
         cityName +
         "&appid=829ab038feb797ebd959e94c190da467&units=imperial";
     var apiFive = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
-
+    }
     //making a request to the url
     fetch(apiURL)
         .then(function (response) {
@@ -19,8 +26,12 @@ var weather = function (cityName) {
                     var lat = data.coord.lat;
                     var lon = data.coord.lon;
                     displayWeather(city, icon, wind, humidity, temp,);
+                    if (location.protocol === 'http:') {
+                    var apiUV = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
+                    } else {
+                     var apiUV = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
+                     }
 
-                    var apiUV = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
                     fetch(apiUV)
                         .then(function (response) {
                             if (response.ok)
