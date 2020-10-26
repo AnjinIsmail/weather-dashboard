@@ -1,4 +1,4 @@
-# weather-dashboard
+# Weather-dashboard
 
 ## Description
 
@@ -27,6 +27,11 @@ Below is the list of main objects to be met in staisfying the traveler using the
     - Once the page is refreshed and a new city is entered, the new city name will replace the pervious local storage's data.
 
 
-Deployed Application
+Deployed Application: https://anjinismail.github.io/weather-dashboard/
 
 Screenshots
+<img src="https://github.com/AnjinIsmail/weather-dashboard/blob/main/assets/screenshots/1.png">
+<img src="https://github.com/AnjinIsmail/weather-dashboard/blob/main/assets/screenshots/2.png">
+<img src="https://github.com/AnjinIsmail/weather-dashboard/blob/main/assets/screenshots/3.png">
+
+
