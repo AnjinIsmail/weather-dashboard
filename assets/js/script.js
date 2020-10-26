@@ -113,17 +113,21 @@ var formSubmitHandler = function (event) {
 userForm.addEventListener("submit", formSubmitHandler);
 
 function loadStorage() {
-    citystorage = JSON.parse(localStorage.getItem("city"))
-    for (i = 0; i < citystorage.city.length; i++) {
+    cityStorage = JSON.parse(localStorage.getItem("city"))
 
-        var cities = citystorage.city[i].city
+    for (i = 0; i < cityStorage.city.length; i++) {
+        
+        //gets the local storage data and stores it back to the array- 
+        citySave.city.push(cityStorage.city[i])
 
-        var pastCity = document.getElementById("pastCity")
-        var cityList = document.createElement("button")
-        cityList.className = "list-group-item"
-        cityList.id = "cityValue"
-        cityList.innerHTML = cities
-        pastCity.appendChild(cityList)
+        var cities = cityStorage.city[i]
+
+        var pastCityEl = document.getElementById("pastCity")
+        var cityListEl = document.createElement("button")
+        cityListEl.className = "list-group-item"
+        cityListEl.id = "cityValue"
+        cityListEl.innerHTML = cities
+        pastCityEl.appendChild(cityListEl)
     }
 }
 
