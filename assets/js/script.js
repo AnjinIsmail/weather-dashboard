@@ -3,7 +3,7 @@ var weather = function (cityName) {
         "https://api.openweathermap.org/data/2.5/weather?q=" +
         cityName +
         "&appid=829ab038feb797ebd959e94c190da467&units=imperial";
-    var apiFive = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
+    var apiFive = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
 
     //making a request to the url
     fetch(apiURL)
@@ -20,7 +20,7 @@ var weather = function (cityName) {
                     var lon = data.coord.lon;
                     displayWeather(city, icon, wind, humidity, temp,);
 
-                    var apiUV = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
+                    var apiUV = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
                     fetch(apiUV)
                         .then(function (response) {
                             if (response.ok)
@@ -64,7 +64,7 @@ var weather = function (cityName) {
                         var humidity = data.list[i].main.humidity;
                         var date = data.list[i].dt_txt;
                         var wind = data.list[i].wind.speed;
-                        var iconURL = "http://openweathermap.org/img/w/" + icon + ".png"
+                        var iconURL = "https://openweathermap.org/img/w/" + icon + ".png"
                         document.querySelector("#icon-" + i).src = iconURL
                         document.querySelector("#date-" + i).append((moment(data.list[i].dt_txt).format("l")))
                         document.querySelector("#temp-" + i).append(temp)
@@ -81,7 +81,7 @@ var weather = function (cityName) {
 }
 
 var displayWeather = function (city, icon, wind, humidity, temp, UV) {
-    var iconURL = "http://openweathermap.org/img/w/" + icon + ".png"
+    var iconURL = "https://openweathermap.org/img/w/" + icon + ".png"
 
     document.querySelector("img").src = iconURL
     document.querySelector("#city").append(city + " (" + moment().format("l") + ")")
