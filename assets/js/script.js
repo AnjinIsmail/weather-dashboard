@@ -35,13 +35,13 @@ var weather = function (cityName) {
                                         document.querySelector("#UV").className = "yellow"
                                     }
                                     else if (uv < 8) {
-                                        document.querySelector("#UV").innerHTML = "organe"
+                                        document.querySelector("#UV").className = "organe"
                                     }
                                     else if (uv < 11) {
-                                        document.querySelector("#UV").innerHTML = "red"
+                                        document.querySelector("#UV").className = "red"
                                     }
                                     else {
-                                        document.querySelector("#UV").innerHTML = "purple"
+                                        document.querySelector("#UV").className = "purple"
                                     }
                                 })
                         })
@@ -93,39 +93,42 @@ var displayWeather = function (city, icon, wind, humidity, temp, UV) {
 
 var citySearch = document.querySelector("#search");
 var userForm = document.querySelector("#user-form");
-
+var citySave = {
+    city: [],
+}
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
     var cityName = citySearch.value.trim();
     weather(cityName);
     citySearch.textContent = "";
-    localStorage.setItem("city", cityName)
+    citySave.city.push({
+        "city": cityName
+    })
+    localStorage.setItem("city", JSON.stringify(citySave))
 }
 
 
 userForm.addEventListener("submit", formSubmitHandler);
-    
+
 function loadStorage() {
+    citystorage = JSON.parse(localStorage.getItem("city"))
+    for (i = 0; i < citystorage.city.length; i++) {
 
-        value = localStorage.getItem("city");
-        console.log(value)
+        var cities = citystorage.city[i].city
+
         var pastCity = document.getElementById("pastCity")
-        var cityList= document.createElement("li")
-        cityList.innerHTML = value
+        var cityList = document.createElement("button")
+        cityList.className = "list-group-item"
+        cityList.id = "cityValue"
+        cityList.innerHTML = cities
         pastCity.appendChild(cityList)
-
+    }
 }
 
 loadStorage()
 
-
-
-
-
-// // use this one below
-// // every time something with a class of movie is clicked on
-// // when they are dynamically loaded via js
-// $(document).on("click", ".searchHistory", function() {
-//     console.log("hi");
-// })
+document.getElementById("pastCity").addEventListener("click", function () {
+    var cityValue = document.getElementById("cityValue").innerHTML
+    weather(cityValue)
+});
