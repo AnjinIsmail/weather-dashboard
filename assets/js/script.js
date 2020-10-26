@@ -103,9 +103,8 @@ var formSubmitHandler = function (event) {
     var cityName = citySearch.value.trim();
     weather(cityName);
     citySearch.textContent = "";
-    citySave.city.push({
-        "city": cityName
-    })
+    citySave.city.push(cityName)
+   
     localStorage.setItem("city", JSON.stringify(citySave))
 }
 
