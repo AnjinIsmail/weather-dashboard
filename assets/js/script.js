@@ -106,6 +106,7 @@ var formSubmitHandler = function (event) {
     citySave.city.push(cityName)
    
     localStorage.setItem("city", JSON.stringify(citySave))
+document.getElementById("user-form").reset()
 }
 
 
