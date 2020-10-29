@@ -133,11 +133,8 @@ function loadStorage() {
 
 loadStorage()
 
-document.getElementById("pastCity").addEventListener("click", function(e) {
-  event.preventDefault();
-  if(e.target && e.target.matches("button.list-group-item")) {
-    console.log(e.target.innerHTML)
-    cityName = e.target.innerHTML
-      weather(cityName)  
-  }
+document.getElementById("pastCity").addEventListener("click", function () {
+    var cityValue = document.getElementById("cityValue").innerHTML
+    weather(cityValue)
 });
+
