@@ -20,12 +20,6 @@ Below is the list of main objects to be met in staisfying the traveler using the
 ### 5- under viewing future weather conditions for that city, 5 day forecast displays: the date , an icon representation of weather conditions, the temperature, and the humidity.
 ### 6- when clicking on a city in the serach history, current and future coniditions for that city are displayed again.
 
-<<<<<<< HEAD
-=======
-### Current issues I am running into :
-1- Upon clicking on the histroy list, the pervious data/content doesnt clearout. As a result, multiple citie data are displayed (crowded)
-
->>>>>>> 3048f355dca6e1d7b7eb5f00c3c8737c60dddb62
 
 
 Deployed Application: https://anjinismail.github.io/weather-dashboard/

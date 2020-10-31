@@ -110,37 +110,14 @@ var formSubmitHandler = function (event) {
     weather(cityName);
     citySearch.textContent = "";
     citySave.city.push(cityName)
-<<<<<<< HEAD
-
-    localStorage.setItem("city", JSON.stringify(citySave))
-
-    document.getElementById("user-form").reset();
-=======
    
     localStorage.setItem("city", JSON.stringify(citySave))
 document.getElementById("user-form").reset()
->>>>>>> 3048f355dca6e1d7b7eb5f00c3c8737c60dddb62
 }
 
 
 userForm.addEventListener("submit", formSubmitHandler);
 
-<<<<<<< HEAD
-
-function loadStorage() {
-    cityStorage = JSON.parse(localStorage.getItem("city"))
-    // if (!citySave) {
-    //     citySave = {
-    //       city: [],
-    //     };
-    //   }
-
-    for (i = 0; i < cityStorage.city.length; i++) {
-        
-        //gets the local storage data and stores it back to the array- 
-        citySave.city.push(cityStorage.city[i])
-
-=======
 function loadStorage() {
     cityStorage = JSON.parse(localStorage.getItem("city"))
 
@@ -149,7 +126,6 @@ function loadStorage() {
         //gets the local storage data and stores it back to the array- 
         citySave.city.push(cityStorage.city[i])
 
->>>>>>> 3048f355dca6e1d7b7eb5f00c3c8737c60dddb62
         var cities = cityStorage.city[i]
 
         var pastCityEl = document.getElementById("pastCity")
