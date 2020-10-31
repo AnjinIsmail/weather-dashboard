@@ -5,7 +5,7 @@ var weather = function (cityName) {
         cityName +
         "&appid=829ab038feb797ebd959e94c190da467&units=imperial";
     var apiFive = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
-
+   
     //making a request to the url
     fetch(apiURL)
         .then(function (response) {
@@ -20,8 +20,9 @@ var weather = function (cityName) {
                     var lat = data.coord.lat;
                     var lon = data.coord.lon;
                     displayWeather(city, icon, wind, humidity, temp,);
-
-                    var apiUV = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
+                    
+                     var apiUV = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=829ab038feb797ebd959e94c190da467&units=imperial"
+                     
                     fetch(apiUV)
                         .then(function (response) {
                             if (response.ok)
@@ -109,15 +110,22 @@ var formSubmitHandler = function (event) {
     weather(cityName);
     citySearch.textContent = "";
     citySave.city.push(cityName)
+<<<<<<< HEAD
 
     localStorage.setItem("city", JSON.stringify(citySave))
 
     document.getElementById("user-form").reset();
+=======
+   
+    localStorage.setItem("city", JSON.stringify(citySave))
+document.getElementById("user-form").reset()
+>>>>>>> 3048f355dca6e1d7b7eb5f00c3c8737c60dddb62
 }
 
 
 userForm.addEventListener("submit", formSubmitHandler);
 
+<<<<<<< HEAD
 
 function loadStorage() {
     cityStorage = JSON.parse(localStorage.getItem("city"))
@@ -132,6 +140,16 @@ function loadStorage() {
         //gets the local storage data and stores it back to the array- 
         citySave.city.push(cityStorage.city[i])
 
+=======
+function loadStorage() {
+    cityStorage = JSON.parse(localStorage.getItem("city"))
+
+    for (i = 0; i < cityStorage.city.length; i++) {
+        
+        //gets the local storage data and stores it back to the array- 
+        citySave.city.push(cityStorage.city[i])
+
+>>>>>>> 3048f355dca6e1d7b7eb5f00c3c8737c60dddb62
         var cities = cityStorage.city[i]
 
         var pastCityEl = document.getElementById("pastCity")
@@ -152,3 +170,4 @@ document.getElementById("pastCity").addEventListener("click", function (event) {
     }
     
 });
+
