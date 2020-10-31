@@ -61,6 +61,7 @@ h1 {
   padding-right: 0px;
   margin-bottom: 20px;
   margin-left: 0px;
+  display: flexbox;
 } 
 
 #body{
@@ -78,3 +79,6 @@ h1 {
   padding-left: 10px;
   padding-top: 5px;
 }
+.container-lg {
+  display: flexbox;
+} 

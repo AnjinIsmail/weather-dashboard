@@ -1,4 +1,5 @@
 var weather = function (cityName) {
+    document.querySelector("#city").innerHTML="";
     var apiURL =
         "https://api.openweathermap.org/data/2.5/weather?q=" +
         cityName +
@@ -59,6 +60,11 @@ var weather = function (cityName) {
             if (response.ok)
                 response.json().then(function (data) {
                     for (i = 0; i < data.list.length; i = i + 8) {
+                        document.querySelector("#icon-" + i).innerHTML= ""
+                        document.querySelector("#date-" + i).innerHTML= ""
+                        document.querySelector("#temp-" + i).innerHTML= ""
+                        document.querySelector("#hum-" + i).innerHTML = ""
+                        document.querySelector("#wind-" + i).innerHTML = ""
                         var icon = data.list[i].weather[0].icon;
                         var temp = data.list[i].main.temp
                         var humidity = data.list[i].main.humidity;
@@ -67,9 +73,9 @@ var weather = function (cityName) {
                         var iconURL = "https://openweathermap.org/img/w/" + icon + ".png"
                         document.querySelector("#icon-" + i).src = iconURL
                         document.querySelector("#date-" + i).append((moment(data.list[i].dt_txt).format("l")))
-                        document.querySelector("#temp-" + i).append(temp)
-                        document.querySelector("#hum-" + i).append(humidity)
-                        document.querySelector("#wind-" + i).append(wind)
+                        document.querySelector("#temp-" + i).append("Temperature :" + temp)
+                        document.querySelector("#hum-" + i).append("Humidity :" + humidity)
+                        document.querySelector("#wind-" + i).append("Wind: " + wind)
 
                     }
                 });
@@ -102,33 +108,47 @@ var formSubmitHandler = function (event) {
     var cityName = citySearch.value.trim();
     weather(cityName);
     citySearch.textContent = "";
-    citySave.city.push({
-        "city": cityName
-    })
+    citySave.city.push(cityName)
+
     localStorage.setItem("city", JSON.stringify(citySave))
+
+    document.getElementById("user-form").reset();
 }
 
 
 userForm.addEventListener("submit", formSubmitHandler);
 
+
 function loadStorage() {
-    citystorage = JSON.parse(localStorage.getItem("city"))
-    for (i = 0; i < citystorage.city.length; i++) {
+    cityStorage = JSON.parse(localStorage.getItem("city"))
+    // if (!citySave) {
+    //     citySave = {
+    //       city: [],
+    //     };
+    //   }
 
-        var cities = citystorage.city[i].city
+    for (i = 0; i < cityStorage.city.length; i++) {
+        
+        //gets the local storage data and stores it back to the array- 
+        citySave.city.push(cityStorage.city[i])
 
-        var pastCity = document.getElementById("pastCity")
-        var cityList = document.createElement("button")
-        cityList.className = "list-group-item"
-        cityList.id = "cityValue"
-        cityList.innerHTML = cities
-        pastCity.appendChild(cityList)
+        var cities = cityStorage.city[i]
+
+        var pastCityEl = document.getElementById("pastCity")
+        var cityListEl = document.createElement("button")
+        cityListEl.className = "list-group-item"
+        cityListEl.id = "cityValue"
+        cityListEl.innerHTML = cities
+        pastCityEl.appendChild(cityListEl)
     }
 }
 
 loadStorage()
 
-document.getElementById("pastCity").addEventListener("click", function () {
-    var cityValue = document.getElementById("cityValue").innerHTML
-    weather(cityValue)
+document.getElementById("pastCity").addEventListener("click", function (event) {
+    if(event.target && event.target.nodeName == "BUTTON" ){
+        var cityValue= event.target.innerHTML
+        weather(cityValue)
+    }
+    
 });
